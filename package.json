@@ -1,0 +1,29 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "migrate": "sequelize-cli db:migrate",
+    "start": "node-dev --respawn --clear index.js",
+    "test": "jest --coverage --passWithNoTests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rcovery/sequelize-mock.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rcovery/sequelize-mock/issues"
+  },
+  "homepage": "https://github.com/rcovery/sequelize-mock#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "jest": "^28.1.3",
+    "mysql2": "^2.3.3",
+    "node-dev": "^7.4.3",
+    "sequelize": "^6.21.3",
+    "sequelize-mock": "^0.10.2"
+  }
+}

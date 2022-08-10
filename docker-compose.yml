@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  web:
+    build: .
+    ports:
+      - "8000:3000"
+    container_name: "jest-mock"
+    volumes:
+      - .:/home/application/app
+  db:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: app
+      MYSQL_ROOT_PASSWORD: necronomicon
+    ports:
+      - "3306:3306"

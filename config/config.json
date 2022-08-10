@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "necronomicon",
+    "database": "app",
+    "host": "db",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "necronomicon",
+    "database": "app",
+    "host": "db",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "necronomicon",
+    "database": "app",
+    "host": "db",
+    "dialect": "mysql"
+  }
+}
