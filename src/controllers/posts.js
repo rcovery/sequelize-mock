@@ -1,0 +1,1 @@
+const Factory = require('./factory');
