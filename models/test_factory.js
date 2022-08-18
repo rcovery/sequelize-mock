@@ -1,8 +1,14 @@
 const Sequelize = require('sequelize');
 
 const columns = {
-    id: Sequelize.SMALLINT,
-    name: Sequelize.STRING
+    id: {
+        type: Sequelize.SMALLINT,
+        mock: 1
+    },
+    name: {
+        type: Sequelize.STRING,
+        mock: 'Mugman'
+    },
 }
 
 module.exports = {
