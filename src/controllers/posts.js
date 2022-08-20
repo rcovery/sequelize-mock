@@ -1,1 +1,1 @@
-const Factory = require('./factory');
+import Factory from './factory';

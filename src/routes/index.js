@@ -2,6 +2,6 @@ function load(req, res) {
   res.send('index');
 }
 
-module.exports = {
+export default {
   load
 }

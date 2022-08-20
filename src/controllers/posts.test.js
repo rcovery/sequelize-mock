@@ -1,4 +1,4 @@
-const Post = require('./posts');
+import Post from './posts';
 
 describe('Posts', () => {
     it('should create a new instance of Posts', () => {

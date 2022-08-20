@@ -15,7 +15,7 @@ const columns = {
 }
 
 function init() {
-  (sequelize, DataTypes) => {
+  (sequelize) => {
     class posts extends Model {
       /**
        * Helper method for defining associations.
@@ -38,7 +38,7 @@ function init() {
   }
 }
 
-module.exports = {
+export {
   init,
   columns
 };

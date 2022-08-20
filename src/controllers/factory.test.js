@@ -1,4 +1,4 @@
-const Factory = require('./factory');
+import Factory from './factory';
 
 describe('Factory', () => {
     it('should create a new instance of Factory', () => {
