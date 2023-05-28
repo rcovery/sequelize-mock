@@ -1,36 +1,20 @@
 'use strict';
 
-import { readdirSync } from 'fs';
-import { basename as _basename, join } from 'path';
-import Sequelize, { DataTypes } from 'sequelize';
-const basename = _basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+import { basename as _basename } from 'path';
+import Sequelize from 'sequelize';
+import config from '../config/config.json';
+import Posts from '../models/posts';
+
 const db = {};
 
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
-
-readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-  })
-  .forEach(file => {
-    const model = require(join(__dirname, file)).init(sequelize, DataTypes);
-    db[model.name] = model;
-  });
-
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
+const sequelize = new Sequelize(config[process.env.NODE_ENV]);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+const models = {
+  posts: Posts.init(sequelize),
+}
+
+export { models };
 export default db;

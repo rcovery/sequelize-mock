@@ -6,23 +6,24 @@ describe('Factory', () => {
         expect(factory).toBeInstanceOf(Factory);
     });
 
-    it('should serialize data', () => {
-        const factory = new Factory('test_factory');
-        const result = factory.serialize({
-            name: 'jest',
-            task: 'nothing',
-            pump: 'kin',
+    it('should serialize data', async () => {
+        const factory = new Factory({ table: 'posts' });
+        await factory.serialize({
+            title: 'jest',
+            content: 'oaiewoaiewa'
         });
-        expect(factory).toBeDefined(Factory);
+
+        expect(factory.data).toBeDefined();
+        expect(factory.data.title).toBe('jest');
     });
-    
-    it('should save data', () => {
-        const factory = new Factory('test_factory');
-        const result = factory.save({
-            name: 'jest',
-            task: 'nothing',
-            pump: 'kin',
+
+    it('should save data', async () => {
+        const factory = new Factory({ table: 'posts' });
+        const result = await factory.save({
+            title: 'jest',
+            content: 'oaiewoaiewa'
         });
-        expect(factory).toBeDefined(Factory);
+        expect(factory).toBeDefined();
+        expect(result).toBeDefined();
     });
 });

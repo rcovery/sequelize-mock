@@ -2,11 +2,12 @@
   "name": "app",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "migrate": "sequelize-cli db:migrate",
     "start": "node-dev --respawn --clear index.js",
-    "test": "jest --coverage --passWithNoTests"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --coverage --passWithNoTests"
   },
   "repository": {
     "type": "git",

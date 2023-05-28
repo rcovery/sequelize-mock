@@ -1,16 +1,20 @@
-version: '3.9'
+version: "3.9"
 services:
   web:
     build: .
     ports:
       - "8000:3000"
-    container_name: "jest-mock"
+    container_name: "sequelize_mock"
     volumes:
-      - .:/home/application/app
+      - .:/home/node/app
   db:
-    image: mysql
+    image: mysql:8-debian
     environment:
       MYSQL_DATABASE: app
       MYSQL_ROOT_PASSWORD: necronomicon
+      MYSQL_ROOT_USER: bigsmoke
+      MYSQL_PASSWORD: pineapple
+      MYSQL_USER: carljohnson
+    container_name: "sequelize_mock_db"
     ports:
       - "3306:3306"
