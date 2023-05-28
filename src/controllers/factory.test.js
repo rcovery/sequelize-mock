@@ -2,7 +2,9 @@ import Factory from './factory';
 import db from '../../models/index';
 
 afterAll(async () => {
-    await db.sequelize.close();
+    if (db.sequelize.close) {
+        await db.sequelize.close();
+    }
 });
 
 describe('Factory', () => {
