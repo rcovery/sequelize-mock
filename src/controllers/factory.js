@@ -1,3 +1,5 @@
+import { models } from '../../models/index';
+
 class Factory {
     model;
     table;
@@ -15,27 +17,27 @@ class Factory {
             await this.config();
         }
 
-        this.data = Object.keys(this.columns).map(key => {
-            return {
-                [key]: data[key] ?? this.data[key]
-            }
-        });
-
         this.data = {
-            ...this.data,
             createdAt: new Date(),
             updatedAt: new Date(),
-        }
+        };
+
+        Object.keys(this.columns).forEach(key => {
+            this.data[key] = data[key] ?? this.data[key];
+        });
+
+        return true;
     }
 
     async config() {
-        const { models } = await import('../../models/index');
         const modelInstance = models[this.table];
 
         const { default: { columns } } = await import(`../../models/${this.table}.js`);
 
         this.columns = columns;
         this.model = modelInstance;
+
+        return true;
     }
 
     async save(data = {}) {
@@ -43,7 +45,9 @@ class Factory {
             await this.serialize(data);
         }
 
-        this.response = await this.model.bulkCreate([this.data]);
+        this.response = await this.model.create(this.data);
+
+        return true;
     }
 }
 

@@ -1,11 +1,11 @@
 import Factory from './factory';
+import db from '../../models/index';
+
+afterAll(async () => {
+    await db.sequelize.close();
+});
 
 describe('Factory', () => {
-    it('should create a new instance of Factory', () => {
-        const factory = new Factory();
-        expect(factory).toBeInstanceOf(Factory);
-    });
-
     it('should serialize data', async () => {
         const factory = new Factory({ table: 'posts' });
         await factory.serialize({

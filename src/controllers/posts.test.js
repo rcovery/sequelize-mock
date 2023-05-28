@@ -1,4 +1,4 @@
-import Post from './posts';
+import { Post } from './posts';
 
 describe('Posts', () => {
     it('should create a new instance of Posts', () => {

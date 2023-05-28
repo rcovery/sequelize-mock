@@ -1,6 +1,19 @@
 import { DataTypes } from 'sequelize';
 
 const columns = {
+  id: {
+    // value: 'Test post',
+    primaryKey: true,
+    type: DataTypes.NUMBER
+  },
+  createdAt: {
+    // value: 'Test post',
+    type: DataTypes.DATE
+  },
+  updatedAt: {
+    // value: 'Test post',
+    type: DataTypes.DATE
+  },
   title: {
     // value: 'Test post',
     type: DataTypes.STRING
@@ -12,7 +25,8 @@ const columns = {
 }
 
 function init(sequelize) {
-  return sequelize.define('posts', columns);
+  const mymodel = sequelize.define('posts', columns);
+  return mymodel;
 }
 
 export default {
